@@ -55,7 +55,7 @@ end)
 vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 
 --Requiring coc.lua
-require('coc')
+require('lsp.coc')
 
 -- Set the colorscheme
 vim.cmd('colorscheme gruvbox')

@@ -1,0 +1,18 @@
+{
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_commands.json", ".git"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "initializationOptions": {
+        "clangdFileStatus": true
+      }
+    },
+    "csharp": {
+      "command": "/home/mr1compiler/.omnisharp/OmniSharp",  
+      "args": ["-lsp"],
+      "rootPatterns": [".sln", ".csproj"],
+      "filetypes": ["cs"]
+    }
+  }
+}
