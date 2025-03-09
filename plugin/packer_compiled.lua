@@ -128,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mr1compiler/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/home/mr1compiler/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   }
 }
 

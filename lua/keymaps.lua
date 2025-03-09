@@ -1,3 +1,19 @@
+-- Navigate vim panes better
+vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
+vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+-- jj for exite inserting mode
+
+-- Map <C-n> to toggle NERDTree
+vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+
+
+-- coc-map
+
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
 
 -- Some servers have issues with backup files, see #649
@@ -175,4 +191,3 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
