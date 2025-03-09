@@ -1,3 +1,19 @@
+--Telescope keymaps
+-- plugin_config/keymaps.lua
+
+-- Keybindings for Telescope search
+vim.api.nvim_set_keymap('n', '<leader>ff', ":Telescope find_files<CR>", { noremap = true, silent = true })  -- Search for files
+vim.api.nvim_set_keymap('n', '<leader>fg', ":Telescope live_grep<CR>", { noremap = true, silent = true })  -- Search inside files
+vim.api.nvim_set_keymap('n', '<leader>fb', ":Telescope buffers<CR>", { noremap = true, silent = true })  -- List open buffers
+vim.api.nvim_set_keymap('n', '<leader>fh', ":Telescope help_tags<CR>", { noremap = true, silent = true })  -- Search help tags
+
+
+--Format
+vim.api.nvim_set_keymap('n', '<A-S-F>', ':Neoformat<CR>', { noremap = true, silent = true })
+
+--Exite Telescope
+--vim.api.nvim_set_keymap('n', 'q', ':lua require("telescope.actions").close()<CR>', { noremap = true, silent = true })
+
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')

@@ -15,7 +15,7 @@ vim.cmd('packadd packer.nvim')
 require("plugins")
 require("keymaps")
 require("options")
-require("colorscheme")
+require("plugin_config")
 
 
 

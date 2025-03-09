@@ -2,6 +2,19 @@ require('packer').startup(function()
   -- Auto completion
   use {'neoclide/coc.nvim', branch = 'release'}
 
+
+  -- Lua line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+      }
+
+  use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
+
+
+  --neoformat
+  use 'sbdchd/neoformat'
+
   -- Themes
   use 'morhetz/gruvbox'
 
