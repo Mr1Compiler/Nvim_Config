@@ -1,45 +1,27 @@
 {
-  "languageserver": {
-    "clangd": {
-      "command": "clangd",
-      "rootPatterns": ["compile_commands.json", ".git"],
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "initializationOptions": {
-        "clangdFileStatus": true
-      }
-    },
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [
+                "compile_commands.json",
+                ".git"
+            ],
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "initializationOptions": {
+                "clangdFileStatus": true
+            }
+        },
+
     "csharp": {
-      "command": "/home/mr1compiler/.omnisharp/OmniSharp",  
-      "args": ["-lsp"],
-      "rootPatterns": [".sln", ".csproj"],
-      "filetypes": ["cs"]
+      "command": "csharp-ls",
+      "args": [],
+      "filetypes": ["cs"],
+      "rootPatterns": ["*.csproj", "*.sln"]
     }
-  },
-  "coc.preferences.formatOnSaveFiletypes": [
-    "cpp",
-    "c",
-    "cs",
-    "lua"
-  ],
-  "prettier.enable": false,  
-  "lua.format.enable": true,  
-  "clangd.format.enable": true, 
-  "csharp.format.enable": true,  
-  "neoformat.autoformat": true,  
-  "coc.preferences.signatureHelpDelay": 300,
-  "coc.preferences.formatOnType": true,
-  "csharp.format.options": {
-    "useTabs": false,
-    "tabSize": 4,
-    "insertSpaceAfterCommaDelimiter": true
-  },
-  "clangd.format.options": {
-    "UseTab": "never", 
-    "TabWidth": 4,
-    "IndentWidth": 4
-  },
-  "lua.format.options": {
-    "tabSize": 2,
-    "insertSpaces": true
   }
 }

@@ -7,9 +7,6 @@ if not vim.loop.fs_stat(install_path) then
     install_path
   })
 end
-vim.cmd('packadd packer.nvim')
-
-
 
 
 require("plugins")
