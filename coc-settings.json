@@ -1,27 +1,31 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": [
-                "compile_commands.json",
-                ".git"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "initializationOptions": {
-                "clangdFileStatus": true
-            }
-        },
-
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_commands.json", ".git"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "initializationOptions": {
+        "clangdFileStatus": true
+      }
+    },
     "csharp": {
       "command": "csharp-ls",
       "args": [],
       "filetypes": ["cs"],
       "rootPatterns": ["*.csproj", "*.sln"]
     }
-  }
+  },
+  
+  "prettier.enable": false,
+  "suggest.noselect": false,
+  "tsserver.enable": true,
+  "javascript.suggestionActions.enabled": true,
+  "javascript.validate.enable": true,
+  "html.format.enable": true,
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "css.validate": true,
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.duplicateProperties": "warning",
+  "css.lint.emptyRules": "warning"
 }
