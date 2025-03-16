@@ -16,3 +16,10 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+
+-- vim.cmd([[
+--   augroup C_CPP_Indent
+--     autocmd!
+--     autocmd FileType c,cpp setlocal tabstop=4 shiftwidth=4 expandtab
+--   augroup END
+-- ]])

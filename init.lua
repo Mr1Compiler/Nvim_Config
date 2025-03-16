@@ -1,4 +1,4 @@
--- Install packer if not installed
+--- Install packer if not installed
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if not vim.loop.fs_stat(install_path) then
   vim.fn.system({
@@ -13,10 +13,3 @@ require("plugins")
 require("keymaps")
 require("options")
 require("plugin_config")
-
-
-
-
-
-
-
