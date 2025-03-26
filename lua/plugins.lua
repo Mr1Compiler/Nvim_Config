@@ -1,36 +1,32 @@
-
 return require('packer').startup(function()
-  -- Auto completion
-  -- use {'neoclide/coc.nvim', branch = 'release'}
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-  -- Lua line
+  -- Icons (Only include one devicons plugin)
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-
-  -- Install nvim-web-devicons (icon support for Neovim)
-  use {
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
     config = function()
-      require'nvim-web-devicons'.setup {
-        -- You can change settings here, but the defaults should work
+      require('nvim-web-devicons').setup {
+        default = true
       }
     end
   }
 
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
 
-  -- Add Bufferline plugin
+use 'numToStr/Comment.nvim'
+
+
+  -- UI Enhancements
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
   
+  -- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- Telescope for fuzzy searching
   use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
-
-  -- Themes
-  use 'morhetz/gruvbox'
 
   -- Treesitter for syntax highlighting and more
   use {
@@ -38,13 +34,10 @@ use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devico
     run = ':TSUpdate'
   }
 
-  -- New ones: LSP, CMP, Snippets, and more
-
-  use 'hrsh7th/nvim-compe'
-  -- LSP configuration and helpers
+  -- LSP, Autocompletion & Snippets
   use 'neovim/nvim-lspconfig'        -- LSP support
-  use 'williamboman/mason.nvim'      -- For managing LSP installations
-  use 'williamboman/mason-lspconfig.nvim' -- Automatically installs LSPs
+  use 'williamboman/mason.nvim'      -- LSP manager
+  use 'williamboman/mason-lspconfig.nvim'
   use 'hrsh7th/nvim-cmp'             -- Completion engine
   use 'hrsh7th/cmp-nvim-lsp'         -- LSP completion source
   use 'hrsh7th/cmp-buffer'           -- Buffer completion
@@ -53,15 +46,21 @@ use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devico
   use 'saadparwaiz1/cmp_luasnip'     -- Snippet completion
   use 'onsails/lspkind.nvim'         -- Icons for completion
 
-  -- Code formatter
+  -- Code Formatter
   use 'sbdchd/neoformat'
 
-  -- Other plugins
-  use 'preservim/nerdtree'           -- File Explorer
-  use 'ryanoasis/vim-devicons'
+  -- File Explorer
+  use 'preservim/nerdtree'
+
+  -- Debugging
   use 'mfussenegger/nvim-dap'        -- Debugger integration
-  use 'junegunn/fzf'                 -- Fuzzy finder
-  use 'junegunn/fzf.vim'             -- FZF vim bindings
+
+  -- Fuzzy Finder
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
+
+  -- Theme
+  use 'morhetz/gruvbox'
 
   -- Automatically install missing plugins
   if packer_bootstrap then

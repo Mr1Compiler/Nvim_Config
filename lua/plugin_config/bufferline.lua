@@ -1,35 +1,34 @@
 
-
--- Bufferline Configuration
 require('bufferline').setup {
   options = {
-    numbers = "none",
-    close_command = "bdelete! %d",  -- close current buffer
-    right_mouse_command = "bdelete! %d",  -- close buffer with right-click
-    left_mouse_command = "buffer %d",  -- switch buffer
-    middle_mouse_command = "bdelete! %d", -- close buffer with middle-click
+    numbers = "none",  -- No numbers, only icons
+    close_command = "bdelete! %d",
+    right_mouse_command = "bdelete! %d",
+    left_mouse_command = "buffer %d",
+    middle_mouse_command = "bdelete! %d",
     indicator = {
       icon = "▎",
       style = "icon"
     },
-    buffer_close_icon = "",
-    modified_icon = "●",
-    close_icon = "",
+    buffer_close_icon = "x", -- Correct close icon
+    modified_icon = "●",  -- Correct modified file icon
+    close_icon = "",  -- Fix close icon
     left_trunc_marker = "",
     right_trunc_marker = "",
-    max_name_length = 18,
-    max_prefix_length = 15,
-    tab_size = 18,
+    show_buffer_icons = true,  -- Make sure icons are enabled
+    show_buffer_close_icons = true,
+    separator_style = "slant",  -- Try different separator styles
+    enforce_regular_tabs = true,
+    always_show_bufferline = true,
     diagnostics = "nvim_lsp",
     offsets = {
       {
-        filetype = "NERDTree",   -- Check for NERDTree filetype
-        text = "NERDTree",       -- Label above NERDTree buffer
-        highlight = "Directory", -- Optional: you can define a highlight group
-        padding = 1              -- Add padding around the label
+        filetype = "nvim-tree",
+        text = "Explorer",
+        highlight = "Directory",
+        padding = 1
       },
     },
   }
 }
-
 

@@ -32,7 +32,8 @@ cmp.setup({
 
 -- Gruvbox color palette for completion menu highlights
 vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#ebdbb2', bg = '#3c3836' })  -- Light text on dark background
-vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#3c3836', bg = '#d79921' })  -- Highlight selected item
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#3c3836', bg = '#d79921' })  -- Highlight selected item (make sure this is visible)
+vim.api.nvim_set_hl(0, 'CursorLine', { fg = '#d79921', bg = '#3c3836' })  -- Ensure cursor line is highlighted (same color as PmenuSel)
 vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = '#3c3836' })  -- Sidebar background
 vim.api.nvim_set_hl(0, 'PmenuThumb', { bg = '#d79921' })  -- Scrollbar thumb
 

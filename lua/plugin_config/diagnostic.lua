@@ -1,6 +1,3 @@
-
-
-
 -- Define custom diagnostic signs for different severity levels
 vim.fn.sign_define("DiagnosticSignError", {
   text = "❌",

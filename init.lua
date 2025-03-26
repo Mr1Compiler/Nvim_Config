@@ -8,7 +8,6 @@ if not vim.loop.fs_stat(install_path) then
   })
 end
 
-
 require("plugins")
 require("keymaps")
 require("options")

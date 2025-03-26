@@ -1,5 +1,8 @@
 vim.cmd('syntax on')
 
+--font
+vim.opt.guifont = "JetBrainsMono Nerd Font:h12"  -- Change 'h12' to your preferred size
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 

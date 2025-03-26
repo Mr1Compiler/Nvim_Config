@@ -2,10 +2,10 @@ local lspconfig = require('lspconfig')
 
 -- Global diagnostics settings
 vim.diagnostic.config({
-  virtual_text = true,      -- Enable inline diagnostics
+  virtual_text = false,      -- Enable inline diagnostics
   signs = true,             -- Show signs in the left gutter
   update_in_insert = false, -- Disable diagnostics in Insert mode
-  underline = true,         -- Underline errors and warnings
+  underline = false,         -- Underline errors and warnings
   severity_sort = true,     -- Sort diagnostics by severity
 })
 
@@ -22,20 +22,22 @@ lspconfig.csharp_ls.setup({
   },
 })
 
--- 🔧 C/C++ LSP
+-- C/C++ LSP setup using clangd
 lspconfig.clangd.setup({
-  cmd = { "clangd" },
+  cmd = { "clangd" },  -- Uses the globally installed clangd
   filetypes = { "c", "cpp", "objc", "objcpp" },
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+  root_dir = lspconfig.util.root_pattern("CMakeLists.txt", ".git"),  -- Use CMake or git as root pattern
   settings = {
     clangd = {
-      compilationDatabasePath = "build",
-    },
-  },
+      -- Any additional clangd settings can go here
+      enable = true,
+    }
+  }
 })
 
 -- 🟡 Lua LSP
 lspconfig.lua_ls.setup({
+  cmd = { "/mnt/extraspace/Nvim_Configs/Language_servers/lua-language-server/bin/lua-language-server" },
   settings = {
     Lua = {
       runtime = { version = "LuaJIT" }, -- LuaJIT is used for Neovim
@@ -45,6 +47,7 @@ lspconfig.lua_ls.setup({
     }
   }
 })
+
 
 -- 🟦 JavaScript & TypeScript LSP (Using `ts_ls` instead of `tsserver`)
 lspconfig.ts_ls.setup({

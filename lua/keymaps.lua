@@ -3,6 +3,15 @@ vim.o.tabstop = 4          -- Number of spaces a tab character represents
 vim.o.shiftwidth = 4       -- Number of spaces to use for each level of indentation
 vim.o.expandtab = true     -- Use spaces instead of tabs
 
+
+-- Toggle comment with gcc
+vim.api.nvim_set_keymap('n', 'gcc', "I// <Esc>", { noremap = true, silent = true })
+
+-- Toggle comment for selected lines in Visual Mode
+vim.api.nvim_set_keymap('v', 'gc', ":s/^/\\/\\//<CR>:noh<CR>", { noremap = true, silent = true })
+
+
+
 -- Keybindings for Telescope search
 vim.api.nvim_set_keymap('n', '<leader>ff', ":Telescope find_files<CR>", { noremap = true, silent = true })  -- Search for files
 vim.api.nvim_set_keymap('n', '<leader>fg', ":Telescope live_grep<CR>", { noremap = true, silent = true })  -- Search inside files
