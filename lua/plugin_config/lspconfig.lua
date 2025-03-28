@@ -1,14 +1,5 @@
 local lspconfig = require('lspconfig')
 
--- Global diagnostics settings
-vim.diagnostic.config({
-  virtual_text = false,      -- Enable inline diagnostics
-  signs = true,             -- Show signs in the left gutter
-  update_in_insert = false, -- Disable diagnostics in Insert mode
-  underline = false,         -- Underline errors and warnings
-  severity_sort = true,     -- Sort diagnostics by severity
-})
-
 -- 🌐 C# LSP
 lspconfig.csharp_ls.setup({
   cmd = { "csharp-ls" },
@@ -88,4 +79,5 @@ lspconfig.pyright.setup({
     },
   },
 })
+
 

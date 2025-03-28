@@ -75,10 +75,10 @@ vim.api.nvim_set_keymap('n', 'K', '<CMD>lua _G.show_docs()<CR>', { silent = true
 vim.api.nvim_set_keymap('n', '<leader>f', ':NERDTreeFind<CR>', { noremap = true, silent = true })
 
 -- Highlight the symbol and its references on a CursorHold event
-vim.api.nvim_create_augroup("LSPGroup", {})
-vim.api.nvim_create_autocmd("CursorHold", {
-    group = "LSPGroup",
-    command = "silent lua vim.lsp.buf.document_highlight()",
-    desc = "Highlight symbol under cursor on CursorHold",
-})
+-- vim.api.nvim_create_augroup("LSPGroup", {})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--     group = "LSPGroup",
+--     command = "silent lua vim.lsp.buf.document_highlight()",
+--     desc = "Highlight symbol under cursor on CursorHold",
+-- })
 
