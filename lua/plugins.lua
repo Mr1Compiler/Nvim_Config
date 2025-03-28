@@ -1,3 +1,4 @@
+
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -51,13 +52,13 @@ return require('packer').startup(function()
   use 'preservim/nerdtree'
 
   -- Debugging
-    use {
-  'rcarriga/nvim-dap-ui',
-  requires = {
-    'mfussenegger/nvim-dap',
-    'nvim-neotest/nvim-nio' -- Required dependency
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = {
+      'mfussenegger/nvim-dap',
+      'nvim-neotest/nvim-nio' -- Required dependency
+    }
   }
-}
   use 'theHamsta/nvim-dap-virtual-text' -- Virtual text support for nvim-dap
 
   -- Fuzzy Finder
@@ -72,4 +73,3 @@ return require('packer').startup(function()
     require('packer').sync()
   end
 end)
-
