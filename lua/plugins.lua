@@ -1,4 +1,3 @@
-
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -13,9 +12,7 @@ return require('packer').startup(function()
     end
   }
 
-
-use 'numToStr/Comment.nvim'
-
+  use 'numToStr/Comment.nvim'
 
   -- UI Enhancements
   use {
@@ -23,8 +20,8 @@ use 'numToStr/Comment.nvim'
     requires = 'nvim-tree/nvim-web-devicons'
   }
   
-  -- using packer.nvim
-use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+  -- Bufferline
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- Telescope for fuzzy searching
   use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -54,7 +51,14 @@ use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devico
   use 'preservim/nerdtree'
 
   -- Debugging
-  use 'mfussenegger/nvim-dap'        -- Debugger integration
+    use {
+  'rcarriga/nvim-dap-ui',
+  requires = {
+    'mfussenegger/nvim-dap',
+    'nvim-neotest/nvim-nio' -- Required dependency
+  }
+}
+  use 'theHamsta/nvim-dap-virtual-text' -- Virtual text support for nvim-dap
 
   -- Fuzzy Finder
   use 'junegunn/fzf'
