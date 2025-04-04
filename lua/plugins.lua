@@ -20,6 +20,11 @@ return require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = 'nvim-tree/nvim-web-devicons'
   }
+
+use({
+  "Hoffs/omnisharp-extended-lsp.nvim",
+})
+  
   
   -- Bufferline
   use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}

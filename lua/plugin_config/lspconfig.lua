@@ -1,17 +1,34 @@
-local lspconfig = require('lspconfig')
 
--- 🌐 C# LSP
-lspconfig.csharp_ls.setup({
-  cmd = { "csharp-ls" },
+local lspconfig = require("lspconfig")
+local omnisharp_extended = require("omnisharp_extended")
+
+lspconfig.omnisharp.setup({
+  cmd = { "dotnet", "/home/mr1compiler/.local/bin/omnisharp/OmniSharp.dll" },
+  handlers = omnisharp_extended.handlers, -- 🔥 this enables the magic
   filetypes = { "cs" },
-  root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
+  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
   settings = {
-    csharp = {
-      formatting = { enable = true },
-      codeActions = { enable = true },
-    }
+    RoslynExtensionsOptions = {
+      EnableDecompilationSupport = true,
+    },
+    FormattingOptions = {
+      EnableEditorConfigSupport = true,
+      OrganizeImports = true,
+    },
   },
+  on_attach = function(client, bufnr)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  end,
 })
+
+
+
+
 
 -- C/C++ LSP setup using clangd
 lspconfig.clangd.setup({

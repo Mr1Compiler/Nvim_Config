@@ -12,6 +12,7 @@ vim.api.nvim_set_keymap('v', 'gc', ":s/^/\\/\\//<CR>:noh<CR>", { noremap = true,
 
 
 
+
 -- Keybindings for Telescope search
 vim.api.nvim_set_keymap('n', '<leader>ff', ":Telescope find_files<CR>", { noremap = true, silent = true })  -- Search for files
 vim.api.nvim_set_keymap('n', '<leader>fg', ":Telescope live_grep<CR>", { noremap = true, silent = true })  -- Search inside files
