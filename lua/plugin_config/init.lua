@@ -1,12 +1,15 @@
+-- plugin_config/init.lua
+require("plugin_config.neotree")
 require('plugin_config.lualine')
 require('plugin_config.colorscheme')
---require('plugin_config.treesitter')
+require('plugin_config.treesitter')
 --require('plugin_config.csharp')
 require('plugin_config.diagnostic')
 require('plugin_config.cmp')
 require('plugin_config.lspconfig')
-require('plugin_config.nerdtree')
+--require('plugin_config.nerdtree')
 require('plugin_config.bufferline')
 require('plugin_config.comment')
 require('plugin_config.dap')
 require('plugin_config.telescope')
+

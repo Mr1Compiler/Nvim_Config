@@ -19,11 +19,18 @@ vim.api.nvim_set_keymap('n', '<leader>fg', ":Telescope live_grep<CR>", { noremap
 vim.api.nvim_set_keymap('n', '<leader>fb', ":Telescope buffers<CR>", { noremap = true, silent = true })  -- List open buffers
 vim.api.nvim_set_keymap('n', '<leader>fh', ":Telescope help_tags<CR>", { noremap = true, silent = true })  -- Search help tags
 
--- Toggle NERDTree but focus it if it's already open
-vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+-- Toggle file explorer
+vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>", { noremap = true, silent = true })
+
+-- Toggle open buffers view
+vim.keymap.set("n", "<leader>ob", ":Neotree buffers toggle left<CR>", { noremap = true, silent = true })
+
+-- Toggle Git status view
+vim.keymap.set("n", "<leader>og", ":Neotree git_status toggle left<CR>", { noremap = true, silent = true })
+
 
 -- Format code with Neoformat
-vim.api.nvim_set_keymap('n', '<A-S-F>', ':Neoformat<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { noremap = true, silent = true })
 
 -- Navigate vim panes better
 vim.api.nvim_set_keymap('n', '<c-k>', ':wincmd k<CR>', { noremap = true, silent = true })
