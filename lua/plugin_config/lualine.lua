@@ -29,7 +29,7 @@ pcall(require, "nvim-web-devicons")
 
 require("lualine").setup {
   options = {
-    theme = 'gruvbox',
+    theme = 'kanagawa',
     icons_enabled = true,
     section_separators = '',
     component_separators = '',

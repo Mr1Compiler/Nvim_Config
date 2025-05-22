@@ -119,10 +119,10 @@ _G.packer_plugins = {
     path = "/home/mr1compiler/.local/share/nvim/site/pack/packer/start/fzf.vim",
     url = "https://github.com/junegunn/fzf.vim"
   },
-  gruvbox = {
+  ["kanagawa.nvim"] = {
     loaded = true,
-    path = "/home/mr1compiler/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
+    path = "/home/mr1compiler/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,

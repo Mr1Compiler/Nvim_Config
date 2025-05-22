@@ -76,8 +76,8 @@ use {
   use 'junegunn/fzf.vim'
 
   -- Theme
-  use 'morhetz/gruvbox'
-  -- use "rebelot/kanagawa.nvim"
+  --use 'morhetz/gruvbox'
+   use "rebelot/kanagawa.nvim"
 
   -- Automatically install missing plugins
   if packer_bootstrap then
