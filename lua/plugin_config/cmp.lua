@@ -48,23 +48,22 @@ cmp.setup({
   }, {
     { name = "buffer" },
     { name = "path" },
-
-    window = {
+  }),
+  window = {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
     }),
     documentation = cmp.config.window.bordered(),
   },
-  }),
-  })
+})
 
--- Gruvbox color palette for completion menu highlights
-vim.api.nvim_set_hl(0, "Pmenu", { fg = "#ebdbb2", bg = "#3c3836" }) -- Light text on dark background
---vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#d79921', bold = true })  -- Use only background
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#3c3836" }) -- Ensure cursor line is visible
-vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#3c3836" }) -- Sidebar background
-vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#d79921" }) -- Scrollbar thumb
+-- -- Gruvbox color palette for completion menu highlights
+-- vim.api.nvim_set_hl(0, "Pmenu", { fg = "#ebdbb2", bg = "#3c3836" }) -- Light text on dark background
+-- --vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#d79921', bold = true })  -- Use only background
+-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#3c3836" }) -- Ensure cursor line is visible
+-- vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#3c3836" }) -- Sidebar background
+-- vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#d79921" }) -- Scrollbar thumb
 
 --Ensure that PmenuSel is applied correctly
-vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenu Pmenu ]])
-vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenuSel PmenuSel ]])
+-- vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenu Pmenu ]])
+-- vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenuSel PmenuSel ]])

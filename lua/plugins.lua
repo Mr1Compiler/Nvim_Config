@@ -2,6 +2,10 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Go development
+  use 'ray-x/go.nvim'        -- Modern Go plugin
+  use 'leoluz/nvim-dap-go'   -- Optional, debugging for Go
+
   -- Icons
  use 'nvim-tree/nvim-web-devicons' 
 

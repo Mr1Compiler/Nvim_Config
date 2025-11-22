@@ -22,9 +22,10 @@ vim.fn.sign_define("DiagnosticSignHint", {
 -- Adjust diagnostic display settings
 vim.diagnostic.config({
   virtual_text = false,  -- Disable inline errors (errors will not appear in text)
-  signs = true,  -- Keep signs in the gutter
+  signs = true,  -- Show signs in the gutter (❌, ⚠️, etc.)
   underline = true,
-  update_in_insert = true,  -- Prevent errors from appearing while typing
+  update_in_insert = false,  -- Prevent errors from appearing while typing
+  severity_sort = true,  -- Sort diagnostics by severity
   float = {
     border = "rounded",  -- Use rounded borders for floating errors
     focusable = false,   -- Make the float non-focusable
@@ -49,7 +50,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 })
 
 
-vim.o.updatetime = 300  -- Reduce the delay to 300ms
+vim.o.updatetime = 1000  -- Reduce the delay to 300ms
 -- If you want to reset diagnostics for a specific buffer:
 -- vim.diagnostic.reset(nil, 0)
 

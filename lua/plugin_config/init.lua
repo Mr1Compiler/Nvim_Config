@@ -1,4 +1,5 @@
 -- plugin_config/init.lua
+require('plugin_config.go')
 require("plugin_config.neotree")
 require('plugin_config.lualine')
 require('plugin_config.colorscheme')

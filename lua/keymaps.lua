@@ -1,9 +1,3 @@
--- Global settings for spaces
-vim.o.tabstop = 4          -- Number of spaces a tab character represents
-vim.o.shiftwidth = 4       -- Number of spaces to use for each level of indentation
-vim.o.expandtab = true     -- Use spaces instead of tabs
-
-
 -- Toggle comment with gcc
 vim.api.nvim_set_keymap('n', 'gcc', "I// <Esc>", { noremap = true, silent = true })
 
@@ -29,8 +23,12 @@ vim.keymap.set("n", "<leader>ob", ":Neotree buffers toggle left<CR>", { noremap 
 vim.keymap.set("n", "<leader>og", ":Neotree git_status toggle left<CR>", { noremap = true, silent = true })
 
 
--- Format code with Neoformat
-vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { noremap = true, silent = true })
+-- Format code using LSP formatter (like Ctrl+Shift+I in VS Code)
+vim.keymap.set("n", "<C-S-i>", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true })
+vim.keymap.set("v", "<C-S-i>", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true })
+-- Alternative keybinding if Ctrl+Shift+I doesn't work in your terminal
+vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true })
 
 -- Navigate vim panes better
 vim.api.nvim_set_keymap('n', '<c-k>', ':wincmd k<CR>', { noremap = true, silent = true })
@@ -64,7 +62,21 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':nohlsearch<CR>', { noremap = true, s
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
 -- Keybindings for diagnostics navigation
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic error messages' })
 
+-- Toggle diagnostics list (open/close)
+local diagnostics_active = false
+vim.keymap.set('n', '<leader>q', function()
+  if diagnostics_active then
+    vim.cmd('lclose')
+    diagnostics_active = false
+  else
+    vim.diagnostic.setloclist()
+    diagnostics_active = true
+  end
+end, { desc = 'Toggle diagnostics list' })
 
 -- Show documentation in preview window
 function _G.show_docs()

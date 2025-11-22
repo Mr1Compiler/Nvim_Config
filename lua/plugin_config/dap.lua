@@ -58,4 +58,84 @@ dap.configurations.cs = {
     },
 }
 
+-- Configure Delve for Go Debugging
+dap.adapters.delve = {
+    type = 'server',
+    port = '${port}',
+    executable = {
+        command = 'dlv',
+        args = {'dap', '-l', '127.0.0.1:${port}'},
+    }
+}
+
+dap.configurations.go = {
+    {
+        type = "delve",
+        name = "Debug",
+        request = "launch",
+        program = "${file}"
+    },
+    {
+        type = "delve",
+        name = "Debug test",
+        request = "launch",
+        mode = "test",
+        program = "${file}"
+    },
+    {
+        type = "delve",
+        name = "Debug test (go.mod)",
+        request = "launch",
+        mode = "test",
+        program = "./${relativeFileDirname}"
+    }
+}
+
+-- Configure Node.js Debugging
+dap.adapters.node2 = {
+    type = 'executable',
+    command = 'node',
+    args = {vim.fn.stdpath("data") .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js'},
+}
+
+dap.configurations.javascript = {
+    {
+        type = 'node2',
+        request = 'launch',
+        name = 'Launch Node.js',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        console = 'integratedTerminal',
+    },
+    {
+        type = 'node2',
+        request = 'attach',
+        name = 'Attach to Process',
+        processId = require('dap.utils').pick_process,
+    },
+}
+
+dap.configurations.typescript = {
+    {
+        type = 'node2',
+        request = 'launch',
+        name = 'Launch TypeScript',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        console = 'integratedTerminal',
+        outFiles = {"${workspaceFolder}/dist/**/*.js"},
+        runtimeArgs = {'-r', 'ts-node/register'},
+    },
+    {
+        type = 'node2',
+        request = 'attach',
+        name = 'Attach to Process',
+        processId = require('dap.utils').pick_process,
+    },
+}
+
 
