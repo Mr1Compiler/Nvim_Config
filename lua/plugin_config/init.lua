@@ -1,16 +1,24 @@
 -- plugin_config/init.lua
-require('plugin_config.go')
-require("plugin_config.neotree")
-require('plugin_config.lualine')
-require('plugin_config.colorscheme')
-require('plugin_config.treesitter')
---require('plugin_config.csharp')
-require('plugin_config.diagnostic')
-require('plugin_config.cmp')
-require('plugin_config.lspconfig')
---require('plugin_config.nerdtree')
-require('plugin_config.bufferline')
-require('plugin_config.comment')
-require('plugin_config.dap')
-require('plugin_config.telescope')
+-- Wrap each require in pcall so missing plugins don't break startup
+local configs = {
+  'plugin_config.colorscheme',
+  -- treesitter is loaded via lazy.nvim config callback
+  'plugin_config.lspconfig',
+  'plugin_config.cmp',
+  'plugin_config.go',
+  'plugin_config.neotree',
+  'plugin_config.lualine',
+  'plugin_config.diagnostic',
+  'plugin_config.bufferline',
+  'plugin_config.comment',
+  'plugin_config.dap',
+  'plugin_config.telescope',
+}
+
+for _, mod in ipairs(configs) do
+  local ok, err = pcall(require, mod)
+  if not ok then
+    vim.notify("Failed to load " .. mod .. ": " .. err, vim.log.levels.WARN)
+  end
+end
 

@@ -1,34 +1,4 @@
 -- Using new nvim 0.11 vim.lsp.config API instead of require('lspconfig')
--- local omnisharp_extended = require("omnisharp_extended")
-
--- lspconfig.omnisharp.setup({
---   cmd = { "dotnet", "/home/mr1compiler/.local/bin/omnisharp/OmniSharp.dll" },
---   handlers = omnisharp_extended.handlers, -- 🔥 this enables the magic
---   filetypes = { "cs" },
---   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
---   settings = {
---     RoslynExtensionsOptions = {
---       EnableDecompilationSupport = true,
---     },
---     FormattingOptions = {
---       EnableEditorConfigSupport = true,
---       OrganizeImports = true,
---     },
---   },
--- on_attach = function(client, bufnr)
---   local opts = { noremap = true, silent = true, buffer = bufnr }
---   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
---   vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, opts)
---   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
---   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
---   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
---   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- 🆕
--- end
--- })
-
-
-
-
 
 -- C/C++ LSP setup using clangd
 vim.lsp.config.clangd = {
@@ -59,24 +29,7 @@ vim.lsp.config.lua_ls = {
 vim.lsp.enable("lua_ls")
 
 
-
-
-
--- 🟡 OLD Lua LSP
--- lspconfig.lua_ls.setup({
---   cmd = { "/mnt/extraspace/Nvim_Configs/Language_servers/lua-language-server/bin/lua-language-server" },
---   settings = {
---     Lua = {
---       runtime = { version = "LuaJIT" }, -- LuaJIT is used for Neovim
---       diagnostics = { globals = { "vim" } }, -- Fix "vim is undefined" error
---       workspace = { library = vim.api.nvim_get_runtime_file("", true) },
---       telemetry = { enable = false },
---     }
---   }
--- })
-
-
--- 🟦 JavaScript & TypeScript LSP
+-- JavaScript & TypeScript LSP
 vim.lsp.config.ts_ls = {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
@@ -88,23 +41,7 @@ vim.lsp.config.ts_ls = {
 }
 vim.lsp.enable("ts_ls")
 
--- 🌍 HTML LSP
--- lspconfig.html.setup({
---   filetypes = { "html" },
---   capabilities = vim.lsp.protocol.make_client_capabilities(),
--- })
---
--- -- 🎨 CSS LSP
--- lspconfig.cssls.setup({
---   filetypes = { "css", "scss", "less" },
---   settings = {
---     css = { validate = true },
---     scss = { validate = true },
---     less = { validate = true },
---   },
--- })
---
--- 🐍 Python LSP
+-- Python LSP
 vim.lsp.config.pyright = {
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
@@ -121,4 +58,20 @@ vim.lsp.config.pyright = {
 }
 vim.lsp.enable("pyright")
 
-
+-- Rust LSP
+vim.lsp.config.rust_analyzer = {
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
+  root_markers = { "Cargo.toml", ".git" },
+  settings = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+      diagnostics = {
+        enable = true,
+      },
+    },
+  },
+}
+vim.lsp.enable("rust_analyzer")

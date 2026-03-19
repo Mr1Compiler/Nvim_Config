@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -49,6 +50,13 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
   }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = "...",
+    }),
+  },
   window = {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -56,14 +64,3 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
 })
-
--- -- Gruvbox color palette for completion menu highlights
--- vim.api.nvim_set_hl(0, "Pmenu", { fg = "#ebdbb2", bg = "#3c3836" }) -- Light text on dark background
--- --vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#d79921', bold = true })  -- Use only background
--- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#3c3836" }) -- Ensure cursor line is visible
--- vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#3c3836" }) -- Sidebar background
--- vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#d79921" }) -- Scrollbar thumb
-
---Ensure that PmenuSel is applied correctly
--- vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenu Pmenu ]])
--- vim.cmd([[ autocmd ColorScheme * highlight! link CmpPmenuSel PmenuSel ]])

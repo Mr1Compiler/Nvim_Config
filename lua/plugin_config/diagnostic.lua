@@ -4,14 +4,14 @@ vim.fn.sign_define("DiagnosticSignError", {
   texthl = "DiagnosticSignError", -- Highlight group for error signs
 })
 
-vim.fn.sign_define("DiagnosticSignWarning", {
+vim.fn.sign_define("DiagnosticSignWarn", {
   text = "⚠️",
-  texthl = "DiagnosticSignWarning", -- Highlight group for warning signs
+  texthl = "DiagnosticSignWarn", -- Highlight group for warning signs
 })
 
-vim.fn.sign_define("DiagnosticSignInformation", {
+vim.fn.sign_define("DiagnosticSignInfo", {
   text = "ℹ️",
-  texthl = "DiagnosticSignInformation", -- Highlight group for info signs
+  texthl = "DiagnosticSignInfo", -- Highlight group for info signs
 })
 
 vim.fn.sign_define("DiagnosticSignHint", {
@@ -21,7 +21,7 @@ vim.fn.sign_define("DiagnosticSignHint", {
 
 -- Adjust diagnostic display settings
 vim.diagnostic.config({
-  virtual_text = false,  -- Disable inline errors (errors will not appear in text)
+  virtual_text = true,  -- Show errors inline after the line
   signs = true,  -- Show signs in the gutter (❌, ⚠️, etc.)
   underline = true,
   update_in_insert = false,  -- Prevent errors from appearing while typing
@@ -33,24 +33,23 @@ vim.diagnostic.config({
   },
 })
 
--- Ensure errors are clear when needed
-vim.diagnostic.reset()
+-- Hide diagnostics in insert mode, show on leave
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.diagnostic.enable(true, { bufnr = 0 })
+  end,
+})
 
--- Customize error highlighting
-vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ff6c6b", bg = "NONE" }) -- Red with no background
-vim.api.nvim_set_hl(0, "DiagnosticWarning", { fg = "#e5c07b", bg = "NONE" }) -- Yellow with no background
-vim.api.nvim_set_hl(0, "DiagnosticInformation", { fg = "#61afef", bg = "NONE" }) -- Blue with no background
-vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#98c379", bg = "NONE" }) -- Green with no background
-
--- Add this autocmd for hover display of diagnostics
+-- Show diagnostic float on cursor hold
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
     vim.diagnostic.open_float(nil, { focusable = false })
   end,
 })
 
-
-vim.o.updatetime = 1000  -- Reduce the delay to 300ms
--- If you want to reset diagnostics for a specific buffer:
--- vim.diagnostic.reset(nil, 0)
-
+vim.o.updatetime = 1000

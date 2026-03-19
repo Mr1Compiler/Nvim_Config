@@ -1,5 +1,3 @@
-vim.cmd('syntax on')
-
 --font
 vim.opt.guifont = "JetBrainsMono Nerd Font:h12"  -- Change 'h12' to your preferred size
 
@@ -11,9 +9,6 @@ vim.o.background = 'dark'
 
 -- Enable mouse support
 vim.o.mouse = 'a'
-
--- Map 'jj' to escape in insert mode
-vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
 -- Default tab settings (4 spaces)
 vim.o.tabstop = 4
@@ -38,3 +33,25 @@ vim.cmd([[
     autocmd FileType html,css,scss setlocal tabstop=2 shiftwidth=2 expandtab
   augroup END
 ]])
+
+-- Auto-save when leaving insert mode or text changes
+vim.o.autowriteall = true
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost" }, {
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    if vim.bo[buf].modified and vim.bo[buf].buftype == "" and vim.fn.expand("%") ~= "" then
+      vim.cmd("update")
+    end
+  end,
+})
+
+-- Arabic/RTL support
+vim.opt.encoding = 'utf-8'
+vim.opt.arabicshape = true
+vim.opt.termbidi = false
+
+-- Toggle Arabic mode: <Leader>a
+vim.keymap.set('n', '<Leader>a', function()
+  vim.wo.arabic = not vim.wo.arabic
+  vim.wo.rightleft = vim.wo.arabic
+end, { desc = 'Toggle Arabic mode' })
